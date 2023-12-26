@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -23,6 +24,8 @@ import { eventFormSchema } from "@/lib/validator";
 import { eventDefaultValues } from "@/constants";
 import DropDown from "./DropDown";
 import { FileUploader } from "./FileUploader";
+import { useUploadThing } from "@/lib/uploadthing";
+import { createEvent } from "@/lib/actions/event.actions";
 
 type EventFormProps = {
   userId: string;
@@ -31,14 +34,40 @@ type EventFormProps = {
 
 const EventForm = ({ userId, type }: EventFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
+  const router = useRouter();
+
+  const { startUpload } = useUploadThing("imageUploader");
 
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
     defaultValues: eventDefaultValues,
   });
 
-  function onSubmit(values: z.infer<typeof eventFormSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof eventFormSchema>) {
+    let uploadedImageUrl = values.imageUrl;
+
+    if (files.length > 0) {
+      const uploadedImages = await startUpload(files);
+      if (!uploadedImages) return;
+      uploadedImageUrl = uploadedImages[0].url;
+    }
+
+    if (type === "Create") {
+      try {
+        const newEvent = await createEvent({
+          event: { ...values, imageUrl: uploadedImageUrl },
+          userId,
+          path: "/profile",
+        });
+
+        if (newEvent) {
+          form.reset();
+          router.push(`/events/${newEvent._id}`);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   return (
@@ -232,7 +261,7 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image
                       src="/assets/icons/dollar.svg"
-                      alt="daollar"
+                      alt="dollar"
                       width={24}
                       height={24}
                       className="filter-grey"
@@ -260,8 +289,8 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                                 Free Ticket
                               </label>
                               <Checkbox
-                              onCheckedChange={field.onChange}
-                              checked={field.value}
+                                onCheckedChange={field.onChange}
+                                checked={field.value}
                                 id="isFree"
                                 className="mr-2 h-5 w-5 border-2 border-primary-500"
                               />

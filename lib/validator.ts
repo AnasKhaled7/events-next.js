@@ -14,10 +14,7 @@ export const eventFormSchema = z.object({
   startDateTime: z.date(),
   endDateTime: z.date(),
   categoryId: z.string(),
-  price: z
-    .number()
-    .min(0, "Price must be a positive number")
-    .max(100000, "Price must be less than EGP 100,000"),
+  price: z.string(),
   isFree: z.boolean(),
   url: z.string().url("URL must be a valid URL"),
 });
