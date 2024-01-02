@@ -1,4 +1,6 @@
-// import CheckoutButton from "@/components/shared/CheckoutButton";
+import Image from "next/image";
+
+import CheckoutButton from "@/components/shared/CheckoutButton";
 import Collection from "@/components/shared/Collection";
 import {
   getEventById,
@@ -6,7 +8,6 @@ import {
 } from "@/lib/actions/event.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
-import Image from "next/image";
 
 const EventDetails = async ({
   params: { id },
@@ -23,7 +24,7 @@ const EventDetails = async ({
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
           <Image
             src={event.imageUrl}
             alt="hero image"
@@ -32,7 +33,7 @@ const EventDetails = async ({
             className="h-full min-h-[300px] object-cover object-center"
           />
 
-          <div className="flex w-full flex-col gap-8 p-5 lg:p-10">
+          <div className="flex w-full flex-col gap-8 p-5 md:p-10">
             <div className="flex flex-col gap-6">
               <h2 className="h2-bold">{event.title}</h2>
 
@@ -55,10 +56,10 @@ const EventDetails = async ({
               </div>
             </div>
 
-            {/* <CheckoutButton event={event} /> */}
+            <CheckoutButton event={event} />
 
             <div className="flex flex-col gap-5">
-              <div className="flex gap-2 lg:gap-3">
+              <div className="flex gap-2 md:gap-3">
                 <Image
                   src="/assets/icons/calendar.svg"
                   alt="calendar"
