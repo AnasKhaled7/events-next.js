@@ -55,10 +55,10 @@ export const formatDateTime = (dateString: Date) => {
 
 export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
 
-export const formatPrice = (price: number) => {
+export const formatPrice = (price: number): string => {
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD",
+    currency: "EGP",
   }).format(price);
 
   return formattedPrice;

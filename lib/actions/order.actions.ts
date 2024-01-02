@@ -46,7 +46,7 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
 
     redirect(session.url!);
   } catch (error) {
-    handleError(error);
+    throw error;
   }
 };
 
