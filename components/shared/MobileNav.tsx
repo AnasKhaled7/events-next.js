@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Separator } from "../ui/separator";
 import NavItems from "./NavItems";

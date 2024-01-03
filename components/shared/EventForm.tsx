@@ -8,7 +8,8 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { IEvent } from "@/lib/database/models/event.model";
+import { createEvent, updateEvent } from "@/lib/actions/event.actions";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,13 +21,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import DropDown from "./DropDown";
+import  FileUploader  from "./FileUploader";
 import { eventFormSchema } from "@/lib/validator";
 import { eventDefaultValues } from "@/constants";
-import DropDown from "./DropDown";
-import { FileUploader } from "./FileUploader";
 import { useUploadThing } from "@/lib/uploadthing";
-import { createEvent, updateEvent } from "@/lib/actions/event.actions";
-import { IEvent } from "@/lib/database/models/event.model";
 
 type EventFormProps = {
   userId: string;

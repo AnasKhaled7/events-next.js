@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
-
 import { IEvent } from "@/lib/database/models/event.model";
 import { Button } from "../ui/button";
 import Checkout from "./Checkout";

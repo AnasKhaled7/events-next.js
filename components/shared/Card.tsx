@@ -1,10 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { auth } from "@clerk/nextjs";
-
 import { IEvent } from "@/lib/database/models/event.model";
-import { formatDateTime } from "@/lib/utils";
 import { DeleteConfirmation } from "./DeleteConfirmation";
+import { formatDateTime } from "@/lib/utils";
 
 type CardProps = {
   event: IEvent;

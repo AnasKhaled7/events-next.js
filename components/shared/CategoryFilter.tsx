@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { ICategory } from "@/lib/database/models/category.model";
+import { getAllCategories } from "@/lib/actions/category.actions";
 import {
   Select,
   SelectContent,
@@ -9,8 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ICategory } from "@/lib/database/models/category.model";
-import { getAllCategories } from "@/lib/actions/category.actions";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 
 const CategoryFilter = () => {

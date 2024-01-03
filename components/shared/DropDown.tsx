@@ -1,7 +1,7 @@
 "use client";
 
 import { startTransition, useState, useEffect } from "react";
-
+import { createCategory, getAllCategories } from "@/lib/actions/category.actions";
 import {
   Select,
   SelectContent,
@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { ICategory } from "@/lib/database/models/category.model";
-import { createCategory, getAllCategory } from "@/lib/actions/category.actions";
 
 type DropDownProps = {
   value?: string;
@@ -41,7 +40,7 @@ const DropDown = ({ value, onChangeHandler }: DropDownProps) => {
 
   useEffect(() => {
     const getCategories = async () => {
-      const categoryList = await getAllCategory();
+      const categoryList = await getAllCategories();
       categoryList && setCategories(categoryList as ICategory[]);
     };
 

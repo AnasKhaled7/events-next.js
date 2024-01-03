@@ -1,7 +1,7 @@
 "use server";
 
-import { CreateCategoryParams } from "@/types";
 import { connectToDatabase } from "../database";
+import { CreateCategoryParams } from "@/types";
 import Category from "../database/models/category.model";
 import { handleError } from "../utils";
 
@@ -15,7 +15,7 @@ export async function createCategory({ categoryName }: CreateCategoryParams) {
   }
 }
 
-export async function getAllCategory() {
+export async function getAllCategories() {
   try {
     await connectToDatabase();
     const categories = await Category.find();
