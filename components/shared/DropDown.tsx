@@ -1,7 +1,10 @@
 "use client";
 
 import { startTransition, useState, useEffect } from "react";
-import { createCategory, getAllCategories } from "@/lib/actions/category.actions";
+import {
+  createCategory,
+  getAllCategories,
+} from "@/lib/actions/category.actions";
 import {
   Select,
   SelectContent,
@@ -30,12 +33,14 @@ type DropDownProps = {
 
 const DropDown = ({ value, onChangeHandler }: DropDownProps) => {
   const [categories, setCategories] = useState<ICategory[]>([]);
-  const [newCategory, setNewCategory] = useState<string>("");
+  const [newCategory, setNewCategory] = useState("");
 
   const handleAddCategory = () => {
-    createCategory({ categoryName: newCategory.trim() }).then((category) =>
-      setCategories((prevState) => [...prevState, category])
-    );
+    createCategory({
+      categoryName: newCategory.trim(),
+    }).then((category) => {
+      setCategories((prevState) => [...prevState, category]);
+    });
   };
 
   useEffect(() => {

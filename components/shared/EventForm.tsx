@@ -22,7 +22,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import DropDown from "./DropDown";
-import  FileUploader  from "./FileUploader";
+import FileUploader from "./FileUploader";
 import { eventFormSchema } from "@/lib/validator";
 import { eventDefaultValues } from "@/constants";
 import { useUploadThing } from "@/lib/uploadthing";
