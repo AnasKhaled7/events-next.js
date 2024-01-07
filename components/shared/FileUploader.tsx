@@ -4,7 +4,7 @@ import { useCallback, Dispatch, SetStateAction } from "react";
 import type { FileWithPath } from "@uploadthing/react";
 import { useDropzone } from "@uploadthing/react/hooks";
 import { generateClientDropzoneAccept } from "uploadthing/client";
-
+import { UploadCloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { convertFileToUrl } from "@/lib/utils";
 
@@ -48,12 +48,7 @@ function FileUploader({
         </div>
       ) : (
         <div className="flex-center flex-col py-5 text-grey-500">
-          <img
-            src="/assets/icons/upload.svg"
-            width={77}
-            height={77}
-            alt="file upload"
-          />
+          <UploadCloud size={70} />
           <h3 className="mb-2 mt-2">Drag photo here</h3>
           <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
           <Button type="button">Select from computer</Button>

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { CalendarDays, CircleDollarSign, Link2, MapPin } from "lucide-react";
 import { IEvent } from "@/lib/database/models/event.model";
 import { createEvent, updateEvent } from "@/lib/actions/event.actions";
 import { Button } from "@/components/ui/button";
@@ -192,13 +192,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden border rounded-md px-4">
-                    <Image
-                      src="/assets/icons/location-grey.svg"
-                      alt="location"
-                      width={24}
-                      height={24}
-                    />
-
+                    <MapPin size={24} className="text-grey-500" />
                     <Input
                       placeholder="Event Location or Online"
                       {...field}
@@ -221,13 +215,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden border rounded-md px-4">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      alt="calendar"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
+                    <CalendarDays size={28} className="text-grey-500" />
 
                     <p className="ml-3 whitespace-nowrap text-grey-600">
                       Start Date:
@@ -255,13 +243,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden border rounded-md px-4">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      alt="calendar"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
+                    <CalendarDays size={28} className="text-grey-500" />
 
                     <p className="ml-3 whitespace-nowrap text-grey-600">
                       End Date:
@@ -291,13 +273,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden border rounded-md px-4">
-                    <Image
-                      src="/assets/icons/dollar.svg"
-                      alt="dollar"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
+                    <CircleDollarSign size={34} className="text-grey-500" />
 
                     <Input
                       type="number"
@@ -347,13 +323,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden border rounded-md px-4">
-                    <Image
-                      src="/assets/icons/link.svg"
-                      alt="link"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
+                    <Link2 size={28} className="text-grey-500" />
 
                     <Input
                       placeholder="Event URL"

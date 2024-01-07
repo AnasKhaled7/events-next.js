@@ -2,7 +2,6 @@
 
 import { useTransition } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { deleteEvent } from "@/lib/actions/event.actions";
 import {
   AlertDialog,
@@ -15,6 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { Trash2 } from "lucide-react";
 
 export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
   const pathname = usePathname();
@@ -23,12 +23,7 @@ export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <Image
-          src="/assets/icons/delete.svg"
-          alt="delete"
-          width={20}
-          height={20}
-        />
+        <Trash2 size={20} color="red" />
       </AlertDialogTrigger>
 
       <AlertDialogContent className="bg-white">

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Input } from "../ui/input";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
+import { SearchIcon } from "lucide-react";
 
 const Search = ({
   placeholder = "Search title...",
@@ -40,12 +41,7 @@ const Search = ({
 
   return (
     <div className="flex-center border rounded-md min-h-[54px] w-full overflow-hidden px-4">
-      <Image
-        src="/assets/icons/search.svg"
-        alt="search"
-        width={24}
-        height={24}
-      />
+      <SearchIcon size={24} className="text-grey-500" />
       <Input
         type="text"
         placeholder={placeholder}

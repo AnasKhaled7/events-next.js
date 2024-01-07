@@ -8,6 +8,7 @@ import {
 } from "@/lib/actions/event.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
+import { CalendarDays, MapPin } from "lucide-react";
 
 const EventDetails = async ({
   params: { id },
@@ -59,13 +60,8 @@ const EventDetails = async ({
             <CheckoutButton event={event} />
 
             <div className="flex flex-col gap-5">
-              <div className="flex gap-2 md:gap-3">
-                <Image
-                  src="/assets/icons/calendar.svg"
-                  alt="calendar"
-                  width={32}
-                  height={32}
-                />
+              <div className="flex items-center gap-2 md:gap-3">
+                <CalendarDays size={30} color="#FA776C" />
                 <div className="p-medium-16 lg:p-regular-20 flex flex-col">
                   <p>
                     {formatDateTime(event.startDateTime).dateOnly} -{" "}
@@ -79,12 +75,7 @@ const EventDetails = async ({
               </div>
 
               <div className="p-regular-20 flex items-center gap-3">
-                <Image
-                  src="/assets/icons/location.svg"
-                  alt="location"
-                  width={32}
-                  height={32}
-                />
+                <MapPin size={30} color="#FA776C" />
                 <p className="p-medium-16 lg:p-regular-20">{event.location}</p>
               </div>
             </div>

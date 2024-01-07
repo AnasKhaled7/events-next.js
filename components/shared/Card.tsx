@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { auth } from "@clerk/nextjs";
+import { ArrowUpRight, Pencil } from "lucide-react";
 import { IEvent } from "@/lib/database/models/event.model";
 import { DeleteConfirmation } from "./DeleteConfirmation";
 import { formatDateTime } from "@/lib/utils";
@@ -30,12 +30,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
       {isEventCreator && !hidePrice && (
         <div className="absolute right-2 top-2 border flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all hover:shadow-md">
           <Link href={`/events/${event._id}/update`}>
-            <Image
-              src="/assets/icons/edit.svg"
-              alt="edit"
-              width={20}
-              height={20}
-            />
+            <Pencil size={20} className="text-primary-500" />
           </Link>
 
           <Separator />
@@ -74,12 +69,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
           {hasOrderLink && (
             <Link href={`/orders?eventId=${event._id}`} className="flex gap-2">
               <p className="text-primary-500">Order Details</p>
-              <Image
-                src="/assets/icons/arrow.svg"
-                alt="search"
-                width={10}
-                height={10}
-              />
+              <ArrowUpRight size={18} className="text-primary-500" />
             </Link>
           )}
         </div>

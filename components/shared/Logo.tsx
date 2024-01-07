@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link href="/">
       <Image
-        src="/assets/images/logo.svg"
+        src="/images/logo.svg"
         alt="Evently Logo"
         width={128}
         height={38}
