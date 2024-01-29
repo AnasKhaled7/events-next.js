@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+
 import { headerLinks } from "@/constants";
 
 const NavItems = () => {
   const pathname = usePathname();
 
   return (
-    <ul className="md:flex-between flex w-full flex-col items-start gap-5 md:flex-row">
+    <ul className="flex-between flex w-full items-start gap-5 ">
       {headerLinks.map((link) => {
         const isActive = pathname === link.route;
         return (
